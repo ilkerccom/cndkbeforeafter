@@ -1,0 +1,20 @@
+.cndkbeforeafter { overflow: hidden; position: relative; transition: 0.5s; }
+.cndkbeforeafter-container { background: none; position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 10; }
+.cndkbeforeafter-item { overflow: hidden; position: relative; }
+.cndkbeforeafter-item > div { height: 100%; position: absolute; }
+.cndkbeforeafter-item img { position: absolute; left: 0; top: 0; width: auto; height: 100%; }
+.cndkbeforeafter-item-before { z-index: 5; }
+.cndkbeforeafter-item-after { z-index: 10; }
+.cndkbeforeafter-seperator { width:4px; position: absolute; height: 100%; z-index: 15; left: 0; top: 0; background: white; }
+.cndkbeforeafter-item-before-text, .cndkbeforeafter-item-after-text { position: absolute; z-index: 14; display: inline-block; background: white; padding: 10px; }
+.cndkbeforeafter-item-before-text { left: 50px; bottom: 50px; }
+.cndkbeforeafter-item-after-text { right: 50px; bottom: 50px; }
+.cndkbeforeafter-hover:hover { opacity: 0.95; box-shadow: 0 0 50px #ccc; }
+.cndkbeforeafter-drag-transition { transition: 0.5s; }
+.cndkbeforeafter-hover-transition { transition: 0s; }
+
+
+@media only screen and (max-width: 600px) {
+    .cndkbeforeafter{ width: 100% !important; }
+}
+  

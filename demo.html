@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>cndk.beforeafter.js</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="cndk.beforeafter.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="cndk.beforeafter.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".beforeafterimageitem").cndkbeforeafter();
+            $(".beforeafterimageitemv2").cndkbeforeafter(
+                {
+                    showText: false,
+                    seperatorColor: "blue",
+                    seperatorWidth: "1px",
+                    hoverEffect: false,
+                    beforeText: "ONCESI",
+                    afterText: "SONRASI"
+                }
+            );
+        });
+    </script>
+</head>
+
+<body>
+
+    <h1>Simple Before-After Plugin for JQuery by Ilker Cindik</h1>
+    <hr>
+
+    <h2>DEFAULT</h2>
+    <div class="beforeafterimageitem">
+        <div data-type="data-type-image">
+            <div data-type="before"><img src="images/a1.jpg"></div>
+            <div data-type="after"><img src="images/a2.jpg"></div>
+        </div>
+    </div>
+
+    <h2>ANOTHER</h2>
+    <div class="beforeafterimageitem">
+        <div data-type="data-type-image">
+            <div data-type="before"><img src="images/b1.jpg"></div>
+            <div data-type="after"><img src="images/b2.jpg"></div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div style="width:400px;">
+    <h2>AUTO-SIZE</h2>
+        <div class="beforeafterimageitem">
+            <div data-type="data-type-image">
+                <div data-type="before"><img src="images/a1.jpg"></div>
+                <div data-type="after"><img src="images/a2.jpg"></div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>OPTIONS</h2>
+    <div class="beforeafterimageitemv2">
+        <div data-type="data-type-image">
+            <div data-type="before"><img src="images/a1.jpg"></div>
+            <div data-type="after"><img src="images/a2.jpg"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>
