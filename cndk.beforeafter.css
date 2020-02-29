@@ -6,6 +6,9 @@
 .cndkbeforeafter-item-before { z-index: 5; }
 .cndkbeforeafter-item-after { z-index: 10; }
 .cndkbeforeafter-seperator { width:4px; position: absolute; height: 100%; z-index: 15; left: 0; top: 0; background: white; }
+.cndkbeforeafter-seperator > div > span { cursor: pointer; position: absolute; width: 60px; height: 60px; background: white; top: 50%; left: 50%; margin-top: -30px; margin-left: -30px; border-radius: 30px; } 
+.cndkbeforeafter-seperator > div > span::after { content: ""; border: solid #3c3c3c; border-width: 0 7px 7px 0; display: inline-block; padding: 6px; transform: rotate(135deg); -webkit-transform: rotate(135deg); top: 50%; position: absolute; margin-top: -10px; left: 0; margin-left: 10px; }
+.cndkbeforeafter-seperator > div > span::before { content: ""; border: solid #3c3c3c; border-width: 7px 0 0 7px; display: inline-block; padding: 6px; transform: rotate(135deg); -webkit-transform: rotate(135deg); top: 50%; position: absolute; margin-top: -10px; right: 0; margin-right: 10px; }
 .cndkbeforeafter-item-before-text, .cndkbeforeafter-item-after-text { position: absolute; z-index: 14; display: inline-block; background: white; padding: 10px; }
 .cndkbeforeafter-item-before-text { left: 50px; bottom: 50px; }
 .cndkbeforeafter-item-after-text { right: 50px; bottom: 50px; }

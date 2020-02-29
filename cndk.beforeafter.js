@@ -2,26 +2,36 @@ $.fn.cndkbeforeafter = function(options) {
 
     // Default settings
     var settings = $.extend({
-        mode: "hover", /* hover,drag */
+        mode: "drag", /* hover,drag */
         showText: true,
         beforeText: "BEFORE",
         afterText: "AFTER",
-        seperatorWidth: "4px",
+        seperatorWidth: "5px",
         seperatorColor: "#ffffff",
         hoverEffect: true,
     }, options);
 
-    // One or multlple
-    if(this.length > 0)
+    // This
+    var element = this;
+
+    // Wait for image(s) loading
+    var img = new Image();
+    img.src = $(this).find(">div").eq(0).find('div[data-type="before"] img').attr("src"); 
+    img.onload = function() {
+        runCndkBeforeAfter(element);
+    };
+
+    // Run Plugin
+    function runCndkBeforeAfter(element)
     {
-        this.each(function() { 
+        element.each(function() { 
 
             // Get contents
-            var count = $(this).find(">div").length;
+            var count = $(this).find(">div>div").length;
             if(count <= 1)
             {
                 // No images
-                console.log("No before-after images found.");
+                console.log("(cndk.beforeafter.js) Error -> No before-after images found.");
             }
 
             // Continue
@@ -61,7 +71,6 @@ $.fn.cndkbeforeafter = function(options) {
                 img2.addClass("cndkbeforeafter-item-after");
                 div2.addClass("cndkbeforeafter-item-after-c");
                 div2.css("z-index","1");
-                
 
                 // Image-Item width/height
                 var itemwidth = img1.width();
@@ -78,8 +87,8 @@ $.fn.cndkbeforeafter = function(options) {
                 }
 
                 // Item
-                $(this).find(">div").eq(i).addClass("cndkbeforeafter-item");
-                $(this).find(">div").eq(i).css("height",itemheight + "px");
+                $(this).find(">div").eq(0).addClass("cndkbeforeafter-item");
+                $(this).find(">div").eq(0).css("height",itemheight + "px");
 
                 // Start position
                 div1.css("width","50%");
@@ -93,9 +102,9 @@ $.fn.cndkbeforeafter = function(options) {
 
             if(settings.mode == "hover")
             {
-                $(".cndkbeforeafter-seperator, .cndkbeforeafter-item > div").addClass("cndkbeforeafter-hover-transition");
+                $(root).find(".cndkbeforeafter-seperator, .cndkbeforeafter-item > div").addClass("cndkbeforeafter-hover-transition");
                 $(root).mousemove(function(e){
-                    var parentOffset = $(this).parent().offset();
+                    var parentOffset = $(this).offset();
                     var mouseX = parseInt((e.pageX - parentOffset.left));
                     var mousePercent = (mouseX*100)/parseInt(root.width());
                     $(this).find(".cndkbeforeafter-item-before-c").css("width",mousePercent+"%");
@@ -109,16 +118,42 @@ $.fn.cndkbeforeafter = function(options) {
             }
             else if(settings.mode == "drag")
             {
-                $(".cndkbeforeafter-seperator, .cndkbeforeafter-item > div").addClass("cndkbeforeafter-drag-transition");
-                $(".cndkbeforeafter-seperator").draggable();
+                $(root).find(".cndkbeforeafter-seperator, .cndkbeforeafter-item > div").addClass("cndkbeforeafter-drag-transition");
                 $(root).click(function(e){
-                    var parentOffset = $(this).parent().offset();
+                    var parentOffset = $(this).offset();
                     var mouseX = parseInt((e.pageX - parentOffset.left));
                     var mousePercent = (mouseX*100)/parseInt(root.width());
-                    $(this).find(".cndkbeforeafter-item-after-c").css("width",mousePercent+"%");
-                    $(this).find(".cndkbeforeafter-item-before-c").css("width",(100-mousePercent)+"%");
+                    $(this).find(".cndkbeforeafter-item-before-c").css("width",mousePercent+"%");
+                    $(this).find(".cndkbeforeafter-item-after-c").css("width",(100-mousePercent)+"%");
                     $(this).find(".cndkbeforeafter-seperator").css("left",mousePercent+"%");
                 });
+
+                // Draggable seperator
+                var isSliding = false;
+                var currentElement = (root);
+                currentElement.find(".cndkbeforeafter-seperator").on("mousedown",function(e){
+                    isSliding = true;
+                    currentElement.find(".cndkbeforeafter-seperator, .cndkbeforeafter-item > div").removeClass("cndkbeforeafter-drag-transition");
+                    currentElement.mousemove(function(e){
+                        if(isSliding) {
+                            var parentOffset = currentElement.offset();
+                            var mouseX = parseInt((e.pageX - parentOffset.left));
+                            var mousePercent = (mouseX*100)/parseInt(root.width());
+                            currentElement.find(".cndkbeforeafter-item-before-c").css("width",mousePercent+"%");
+                            currentElement.find(".cndkbeforeafter-item-after-c").css("width",(100-mousePercent)+"%");
+                            currentElement.find(".cndkbeforeafter-seperator").css("left",mousePercent+"%");
+                        }
+                    });
+                });
+
+                // Release
+                currentElement.find(".cndkbeforeafter-seperator").on("mouseup",function(e){
+                    isSliding = false;
+                    currentElement.find(".cndkbeforeafter-seperator, .cndkbeforeafter-item > div").addClass("cndkbeforeafter-drag-transition");
+                });
+
+                // Add visual to seperator
+                currentElement.find(".cndkbeforeafter-seperator").append("<div><span></span></div>");
             }
 
             $( window ).resize(function() {
