@@ -4,6 +4,12 @@ It is a very simple jQuery plugin that will meet your needs.
 
 ![Screenshot](https://i.ibb.co/1TH9nWB/Ekran-Resmi-2020-02-28-20-30-45.png)
 
+## Demo
+
+See the demo content of the data from the link.
+
+[Go to Demo](https://www.ilkerc.com/cndkbeforeafterdemo/demo.html)
+
 ## Usage
 
 #### Import Javascript Files
