@@ -1,8 +1,8 @@
-# Cndk.BeforeAfter.Js v.0.0.1
+# Cndk.BeforeAfter.Js v.0.0.2
 
 It is a very simple jQuery plugin that will meet your needs.
 
-![Screenshot](https://i.ibb.co/1TH9nWB/Ekran-Resmi-2020-02-28-20-30-45.png)
+![Screenshot](https://i.ibb.co/9bCgWzc/Ekran-Resmi-2020-02-29-21-36-37.png)
 
 ## Demo
 

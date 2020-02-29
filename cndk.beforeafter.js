@@ -5,9 +5,11 @@ $.fn.cndkbeforeafter = function(options) {
         mode: "hover", /* hover,drag */
         showText: true,
         beforeText: "BEFORE",
+        beforeTextPosition: "bottom-left", /* top-left, top-right, bottom-left, bottom-right, {x}px,{x}px */
         afterText: "AFTER",
-        seperatorWidth: "5px",
-        seperatorColor: "#ffffff",
+        afterTextPosition: "bottom-right", /* top-left, top-right, bottom-left, bottom-right, {x}px,{x}px */
+        seperatorWidth: "4px",
+        seperatorColor: "#000000",
         hoverEffect: true,
     }, options);
 
@@ -51,8 +53,10 @@ $.fn.cndkbeforeafter = function(options) {
             // Before-After text
             if(settings.showText == true)
             {
-                root.append("<div class='cndkbeforeafter-item-before-text'>"+settings.beforeText+"</div>");
-                root.append("<div class='cndkbeforeafter-item-after-text'>"+settings.afterText+"</div>");
+                var dataBeforeTitle = $(this).find(">div").eq(0).find('div[data-type="before"]').attr("data-title") == undefined ? settings.beforeText : $(this).find(">div").eq(0).find('div[data-type="before"]').attr("data-title");
+                var dataAfterTitle = $(this).find(">div").eq(0).find('div[data-type="after"]').attr("data-title") == undefined ? settings.afterText : $(this).find(">div").eq(0).find('div[data-type="after"]').attr("data-title");
+                root.append("<div class='cndkbeforeafter-item-before-text cndkbeforeafter-"+settings.beforeTextPosition+"'>"+dataBeforeTitle+"</div>");
+                root.append("<div class='cndkbeforeafter-item-after-text cndkbeforeafter-"+settings.afterTextPosition+"'>"+dataAfterTitle+"</div>");
             }
 
             for(i=0; i<count; i++)
@@ -157,6 +161,20 @@ $.fn.cndkbeforeafter = function(options) {
                 currentElement.find(".cndkbeforeafter-seperator").on("mouseup",function(e){
                     isSliding = false;
                     currentElement.find(".cndkbeforeafter-seperator, .cndkbeforeafter-item > div").addClass("cndkbeforeafter-drag-transition");
+                });
+
+                // Mobile touch-support
+                currentElement.find(".cndkbeforeafter-seperator").on("touchstart",function(e){
+                    isSliding = true;
+                    currentElement.find(".cndkbeforeafter-seperator, .cndkbeforeafter-item > div").removeClass("cndkbeforeafter-drag-transition");
+                    currentElement.on("touchmove",function(e){
+                        var parentOffset = currentElement.offset();
+                        var mouseX = parseInt((e.touches[0].pageX - parentOffset.left));
+                        var mousePercent = (mouseX*100)/parseInt(root.width());
+                        currentElement.find(".cndkbeforeafter-item-before-c").css("width",mousePercent+"%");
+                        currentElement.find(".cndkbeforeafter-item-after-c").css("width",(100-mousePercent)+"%");
+                        currentElement.find(".cndkbeforeafter-seperator").css("left",mousePercent+"%");
+                    });
                 });
 
                 // Add visual to seperator

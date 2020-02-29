@@ -17,7 +17,8 @@
             $(".beforeafterdefault").cndkbeforeafter();
             $(".beforeafterdrag").cndkbeforeafter(
                 {
-                    mode: "drag"
+                    mode: "drag",
+                    beforeTextPosition: "top-left"
                 }
             );
             $(".beforeafterhidetext").cndkbeforeafter(
@@ -27,8 +28,8 @@
             );
             $(".beforeafterimageseperator").cndkbeforeafter(
                 {
-                    seperatorColor: "blue",
-                    seperatorWidth: "15px",
+                    seperatorColor: "#ffffff",
+                    seperatorWidth: "10px",
                 }
             );
         });
@@ -73,9 +74,11 @@
                     mode: "hover",<br>
                     showText: true,<br>
                     beforeText: "BEFORE",<br>
+                    beforeTextPosition: "bottom-left"<br>
                     afterText: "AFTER",<br>
-                    seperatorWidth: "5px",<br>
-                    seperatorColor: "#ffffff",<br>
+                    afterTextPosition: "bottom-right"<br>
+                    seperatorWidth: "4px",<br>
+                    seperatorColor: "#000000",<br>
                     hoverEffect: true,
                   </code>
                 </div>
@@ -168,52 +171,19 @@
 
               <div class="row" style="margin-top: 50px;">
                 <div class="col-md-12">
-                  <h1 class="display-4">Other Demos</h1>
-                  <p>Other demos</p>
-                  <div class="beforeafterdefault">
-                    <div data-type="data-type-image">
-                        <div data-type="before"><img src="images/b1.jpg"></div>
-                        <div data-type="after"><img src="images/b2.jpg"></div>
-                    </div>
-                </div>
-                    <div class="beforeafterdefault" style="margin-top: 50px;">
-                        <div data-type="data-type-image">
-                            <div data-type="before"><img src="images/c1.jpg"></div>
-                            <div data-type="after"><img src="images/c2.jpg"></div>
-                        </div>
-                    </div>
-                </div>
-              </div>
-
-              <div class="row" style="margin-top: 50px;">
-                <div class="col-md-4">
-                  <div class="card mb-4 shadow-sm">
-                    <div class="beforeafterdefault">
-                        <div data-type="data-type-image">
-                            <div data-type="before"><img src="images/a1.jpg"></div>
-                            <div data-type="after"><img src="images/a2.jpg"></div>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="card mb-4 shadow-sm">
-                    <div class="beforeafterdefault">
-                        <div data-type="data-type-image">
-                            <div data-type="before"><img src="images/b1.jpg"></div>
-                            <div data-type="after"><img src="images/b2.jpg"></div>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-2">
-                  <div class="card mb-4 shadow-sm">
-                    <div class="beforeafterdefault">
-                        <div data-type="data-type-image">
-                            <div data-type="before"><img src="images/c1.jpg"></div>
-                            <div data-type="after"><img src="images/c2.jpg"></div>
-                        </div>
-                    </div>
+                  <h1 class="display-4">Attributes</h1>
+                  <p>With default settings.</p>
+                  <code >
+                    data-title="Old image"<br>
+                    data-title="This is new image"
+                  </code>
+                  <div class="card" style="margin-top: 50px;">
+                      <div class="beforeafterdefault">
+                          <div data-type="data-type-image">
+                              <div data-type="before" data-title="Old image"><img src="images/a1.jpg"></div>
+                              <div data-type="after" data-title="This is new image"><img src="images/a2.jpg"></div>
+                          </div>
+                      </div>
                   </div>
                 </div>
               </div>
