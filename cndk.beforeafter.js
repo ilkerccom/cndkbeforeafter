@@ -2,7 +2,7 @@ $.fn.cndkbeforeafter = function(options) {
 
     // Default settings
     var settings = $.extend({
-        mode: "drag", /* hover,drag */
+        mode: "hover", /* hover,drag */
         showText: true,
         beforeText: "BEFORE",
         afterText: "AFTER",
@@ -89,6 +89,13 @@ $.fn.cndkbeforeafter = function(options) {
                 // Item
                 $(this).find(">div").eq(0).addClass("cndkbeforeafter-item");
                 $(this).find(">div").eq(0).css("height",itemheight + "px");
+
+                // Small Before-After text
+                if(itemwidth < 200)
+                {
+                    $(this).find(".cndkbeforeafter-item-after-text").addClass("cndkbeforeafter-extra-small-text cndkbeforeafter-extra-small-text-after");
+                    $(this).find(".cndkbeforeafter-item-before-text").addClass("cndkbeforeafter-extra-small-text cndkbeforeafter-extra-small-text-before");
+                }
 
                 // Start position
                 div1.css("width","50%");

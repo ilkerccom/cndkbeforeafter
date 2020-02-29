@@ -3,20 +3,32 @@
 <head>
     <title>cndk.beforeafter.js</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="cndk.beforeafter.css" rel="stylesheet">
+
+    <!-- for demo page only -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    
+    <!-- cndk.beforeafter.js -->
+    <link href="cndk.beforeafter.css" rel="stylesheet">
     <script src="cndk.beforeafter.js"></script>
     <script>
         $(document).ready(function () {
-            $(".beforeafterimageitem").cndkbeforeafter();
-            $(".beforeafterimageitemv2").cndkbeforeafter(
+            $(".beforeafterdefault").cndkbeforeafter();
+            $(".beforeafterdrag").cndkbeforeafter(
                 {
-                    showText: false,
+                    mode: "drag"
+                }
+            );
+            $(".beforeafterhidetext").cndkbeforeafter(
+                {
+                    showText: false
+                }
+            );
+            $(".beforeafterimageseperator").cndkbeforeafter(
+                {
                     seperatorColor: "blue",
-                    seperatorWidth: "1px",
-                    hoverEffect: false,
-                    beforeText: "ONCESI",
-                    afterText: "SONRASI"
+                    seperatorWidth: "15px",
                 }
             );
         });
@@ -25,46 +37,201 @@
 
 <body>
 
-    <h1>Simple Before-After Plugin for JQuery by Ilker Cindik</h1>
-    <hr>
-
-    <h2>DEFAULT</h2>
-    <div class="beforeafterimageitem">
-        <div data-type="data-type-image">
-            <div data-type="before"><img src="images/a1.jpg"></div>
-            <div data-type="after"><img src="images/a2.jpg"></div>
+    <header>
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+          <div class="container d-flex justify-content-between">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="mr-2" viewBox="0 0 24 24" focusable="false"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+              <strong>cndk.beforeafter.js</strong>
+            </a>
+          </div>
         </div>
-    </div>
+      </header>
+      
+      <main role="main">
+      
+        <section class="jumbotron text-center">
+          <div class="container">
+            <h1>cndk.beforeafter.js</h1>
+            <p class="lead text-muted">
+                Before-After Plugin for jQuery
+            </p>
+            <p>
+              <a href="https://github.com/ilkerccom/cndkbeforeafter" class="btn btn-primary my-2">Explore on GitHub</a>
+            </p>
+          </div>
+        </section>
+      
+        <div class="album py-5 bg-light">
+          <div class="container">
 
-    <h2>ANOTHER</h2>
-    <div class="beforeafterimageitem">
-        <div data-type="data-type-image">
-            <div data-type="before"><img src="images/b1.jpg"></div>
-            <div data-type="after"><img src="images/b2.jpg"></div>
-        </div>
-    </div>
-
-    <hr>
-
-    <div style="width:400px;">
-    <h2>AUTO-SIZE</h2>
-        <div class="beforeafterimageitem">
-            <div data-type="data-type-image">
-                <div data-type="before"><img src="images/a1.jpg"></div>
-                <div data-type="after"><img src="images/a2.jpg"></div>
+            <div class="row" style="margin-top: 50px;">
+                <div class="col-md-12">
+                  <h1 class="display-4">Default Settings</h1>
+                  <p>Default settings</p>
+                  <code >
+                    mode: "hover",<br>
+                    showText: true,<br>
+                    beforeText: "BEFORE",<br>
+                    afterText: "AFTER",<br>
+                    seperatorWidth: "5px",<br>
+                    seperatorColor: "#ffffff",<br>
+                    hoverEffect: true,
+                  </code>
+                </div>
+              </div>
+      
+            <div class="row" style="margin-top: 50px;">
+              <div class="col-md-12">
+                <h1 class="display-4">Default</h1>
+                <p>With default settings.</p>
+                <code >
+                    $(".beforeafterdefault").cndkbeforeafter();
+                </code>
+                <div class="card" style="margin-top: 50px;">
+                    <div class="beforeafterdefault">
+                        <div data-type="data-type-image">
+                            <div data-type="before"><img src="images/a1.jpg"></div>
+                            <div data-type="after"><img src="images/a2.jpg"></div>
+                        </div>
+                    </div>
+                </div>
+              </div>
             </div>
-        </div>
-    </div>
 
-    <hr>
+            <div class="row" style="margin-top: 50px;">
+                <div class="col-md-12">
+                  <h1 class="display-4">Mode : drag</h1>
+                  <p>With default settings.</p>
+                  <code >
+                      $(".beforeafterdrag").cndkbeforeafter(
+                        {
+                            mode: "drag"
+                        }
+                      );
+                  </code>
+                  <div class="card" style="margin-top: 50px;">
+                      <div class="beforeafterdrag">
+                          <div data-type="data-type-image">
+                              <div data-type="before"><img src="images/a1.jpg"></div>
+                              <div data-type="after"><img src="images/a2.jpg"></div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
 
-    <h2>OPTIONS</h2>
-    <div class="beforeafterimageitemv2">
-        <div data-type="data-type-image">
-            <div data-type="before"><img src="images/a1.jpg"></div>
-            <div data-type="after"><img src="images/a2.jpg"></div>
+              <div class="row" style="margin-top: 50px;">
+                <div class="col-md-12">
+                  <h1 class="display-4">Seperator Style</h1>
+                  <p>With default settings.</p>
+                  <code >
+                      $(".beforeafterdrag").cndkbeforeafter(<br>
+                        {<br>
+                            seperatorColor: "blue",<br>
+                            seperatorWidth: "15px",<br>
+                        }<br>
+                      );
+                  </code>
+                  <div class="card" style="margin-top: 50px;">
+                      <div class="beforeafterimageseperator">
+                          <div data-type="data-type-image">
+                              <div data-type="before"><img src="images/a1.jpg"></div>
+                              <div data-type="after"><img src="images/a2.jpg"></div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row" style="margin-top: 50px;">
+                <div class="col-md-12">
+                  <h1 class="display-4">Hide Text</h1>
+                  <p>With default settings.</p>
+                  <code >
+                      $(".beforeafterdrag").cndkbeforeafter(<br>
+                        {<br>
+                            showText: false<br>
+                        }<br>
+                      );
+                  </code>
+                  <div class="card" style="margin-top: 50px;">
+                      <div class="beforeafterhidetext">
+                          <div data-type="data-type-image">
+                              <div data-type="before"><img src="images/a1.jpg"></div>
+                              <div data-type="after"><img src="images/a2.jpg"></div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row" style="margin-top: 50px;">
+                <div class="col-md-12">
+                  <h1 class="display-4">Other Demos</h1>
+                  <p>Other demos</p>
+                  <div class="beforeafterdefault">
+                    <div data-type="data-type-image">
+                        <div data-type="before"><img src="images/b1.jpg"></div>
+                        <div data-type="after"><img src="images/b2.jpg"></div>
+                    </div>
+                </div>
+                    <div class="beforeafterdefault" style="margin-top: 50px;">
+                        <div data-type="data-type-image">
+                            <div data-type="before"><img src="images/c1.jpg"></div>
+                            <div data-type="after"><img src="images/c2.jpg"></div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+
+              <div class="row" style="margin-top: 50px;">
+                <div class="col-md-4">
+                  <div class="card mb-4 shadow-sm">
+                    <div class="beforeafterdefault">
+                        <div data-type="data-type-image">
+                            <div data-type="before"><img src="images/a1.jpg"></div>
+                            <div data-type="after"><img src="images/a2.jpg"></div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="card mb-4 shadow-sm">
+                    <div class="beforeafterdefault">
+                        <div data-type="data-type-image">
+                            <div data-type="before"><img src="images/b1.jpg"></div>
+                            <div data-type="after"><img src="images/b2.jpg"></div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="card mb-4 shadow-sm">
+                    <div class="beforeafterdefault">
+                        <div data-type="data-type-image">
+                            <div data-type="before"><img src="images/c1.jpg"></div>
+                            <div data-type="after"><img src="images/c2.jpg"></div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+          </div>
         </div>
-    </div>
+      
+      </main>
+      
+      <footer class="text-muted">
+        <div class="container">
+          <p class="float-right">
+            <a href="#">Back to top</a>
+          </p>
+          <p>by Ilker Cindik</p>
+        </div>
+      </footer>
 
 </body>
 
