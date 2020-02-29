@@ -1,3 +1,9 @@
+/*!
+ * Cndk.BeforeAfter.js v 0.0.2 (https://github.com/ilkerccom/cndkbeforeafter)
+ * Ilker Cindik
+ * Licensed under the MIT license
+ */
+
 $.fn.cndkbeforeafter = function(options) {
 
     // Default settings
@@ -5,12 +11,16 @@ $.fn.cndkbeforeafter = function(options) {
         mode: "hover", /* hover,drag */
         showText: true,
         beforeText: "BEFORE",
-        beforeTextPosition: "bottom-left", /* top-left, top-right, bottom-left, bottom-right, {x}px,{x}px */
+        beforeTextPosition: "bottom-left", /* top-left, top-right, bottom-left, bottom-right */
         afterText: "AFTER",
-        afterTextPosition: "bottom-right", /* top-left, top-right, bottom-left, bottom-right, {x}px,{x}px */
+        afterTextPosition: "bottom-right", /* top-left, top-right, bottom-left, bottom-right */
         seperatorWidth: "4px",
-        seperatorColor: "#000000",
+        seperatorOpacity: "0.8",
+        theme: "light", /* light,dark  */
+        autoSliding: false,
+        autoSlidingStopOnHover: true,
         hoverEffect: true,
+        enterAnimation: false
     }, options);
 
     // This
@@ -36,10 +46,13 @@ $.fn.cndkbeforeafter = function(options) {
                 console.log("(cndk.beforeafter.js) Error -> No before-after images found.");
             }
 
+            // Add theme class
+            element.addClass("cndkbeforeafter-theme-"+settings.theme);
+
             // Continue
             var root = $(this);
             root.addClass("cndkbeforeafter cndkbeforeafter-root");
-            root.append("<div class='cndkbeforeafter-seperator' style='width:"+settings.seperatorWidth+" ;background:"+settings.seperatorColor+"'></div>");
+            root.append("<div class='cndkbeforeafter-seperator' style='width:"+settings.seperatorWidth+";opacity:"+settings.seperatorOpacity+"'></div>");
 
             // Container
             root.append("<div class='cndkbeforeafter-container'></div>");
@@ -111,8 +124,10 @@ $.fn.cndkbeforeafter = function(options) {
                 root.css("height",itemheight + "px");
             }
 
+            // Modes
             if(settings.mode == "hover")
             {
+                // Hover mode
                 $(root).find(".cndkbeforeafter-seperator, .cndkbeforeafter-item > div").addClass("cndkbeforeafter-hover-transition");
                 $(root).mousemove(function(e){
                     var parentOffset = $(this).offset();
@@ -129,6 +144,7 @@ $.fn.cndkbeforeafter = function(options) {
             }
             else if(settings.mode == "drag")
             {
+                // Drag mode
                 $(root).find(".cndkbeforeafter-seperator, .cndkbeforeafter-item > div").addClass("cndkbeforeafter-drag-transition");
                 $(root).click(function(e){
                     var parentOffset = $(this).offset();
@@ -181,6 +197,41 @@ $.fn.cndkbeforeafter = function(options) {
                 currentElement.find(".cndkbeforeafter-seperator").append("<div><span></span></div>");
             }
 
+            // Start Animation
+            if(settings.enterAnimation)
+            {
+                $(this).addClass("cndkbeforeafter-animation");
+            }
+
+            // Auto-Sliding
+            if(settings.autoSliding)
+            {
+                $(this).attr("auto-sliding","true");
+                $(this).find(".cndkbeforeafter-item-before-c").addClass("cndkbeforeafter-animation-item-1");
+                $(this).find(".cndkbeforeafter-item-after-c").addClass("cndkbeforeafter-animation-item-2");
+                $(this).find(".cndkbeforeafter-seperator").addClass("cndkbeforeafter-animation-seperator");
+
+                if(settings.autoSlidingStopOnHover)
+                {
+                    // Stop On Enter
+                    $(this).on("mouseenter", function(){
+                        $(this).find(".cndkbeforeafter-item-before-c").removeClass("cndkbeforeafter-animation-item-1");
+                        $(this).find(".cndkbeforeafter-item-after-c").removeClass("cndkbeforeafter-animation-item-2");
+                        $(this).find(".cndkbeforeafter-seperator").removeClass("cndkbeforeafter-animation-seperator");
+                    })
+
+                    // Start On Exit
+                    $(this).on("mouseleave", function(){
+                        $(this).find(".cndkbeforeafter-item-before-c").addClass("cndkbeforeafter-animation-item-1");
+                        $(this).find(".cndkbeforeafter-item-after-c").addClass("cndkbeforeafter-animation-item-2");
+                        $(this).find(".cndkbeforeafter-seperator").addClass("cndkbeforeafter-animation-seperator");
+                    })
+                }
+            }
+
+            
+
+            // On window resize
             $( window ).resize(function() {
                 
             });

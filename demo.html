@@ -32,6 +32,18 @@
                     seperatorWidth: "10px",
                 }
             );
+            $(".beforeafterautoslide").cndkbeforeafter(
+                {
+                  autoSliding: true
+                }
+            );
+            $(".beforeafterthemedark").cndkbeforeafter(
+                {
+                  mode: "drag",
+                  theme: "dark"
+                }
+            );
+            
         });
     </script>
 </head>
@@ -71,15 +83,19 @@
                   <h1 class="display-4">Default Settings</h1>
                   <p>Default settings</p>
                   <code >
-                    mode: "hover",<br>
+                    mode: "hover", <b>[hover,drag]</b><br>
                     showText: true,<br>
                     beforeText: "BEFORE",<br>
-                    beforeTextPosition: "bottom-left"<br>
+                    beforeTextPosition: "bottom-left" <b>[top-left,top-right,bottom-left,bottom-right]</b><br>
                     afterText: "AFTER",<br>
-                    afterTextPosition: "bottom-right"<br>
+                    afterTextPosition: "bottom-right" <b>[top-left,top-right,bottom-left,bottom-right]</b><br>
                     seperatorWidth: "4px",<br>
-                    seperatorColor: "#000000",<br>
-                    hoverEffect: true,
+                    seperatorOpacity: "0.8",<br>
+                    theme: "dark" <b>[dark,light]</b><br>
+                    autoSliding: false,<br>
+                    autoSlidingStopOnHover: true,<br>
+                    hoverEffect: true,<br>
+                    enterAnimation: false
                   </code>
                 </div>
               </div>
@@ -109,7 +125,7 @@
                   <code >
                       $(".beforeafterdrag").cndkbeforeafter(
                         {
-                            mode: "drag"
+                            mode: "drag", beforeTextPosition: "top-left"
                         }
                       );
                   </code>
@@ -126,15 +142,32 @@
 
               <div class="row" style="margin-top: 50px;">
                 <div class="col-md-12">
+                  <h1 class="display-4">Theme : dark</h1>
+                  <p>With default settings.</p>
+                  <code >
+                      $(".beforeafterdrag").cndkbeforeafter(
+                        {
+                            theme: "dark"
+                        }
+                      );
+                  </code>
+                  <div class="card" style="margin-top: 50px;">
+                      <div class="beforeafterthemedark">
+                          <div data-type="data-type-image">
+                              <div data-type="before"><img src="images/a1.jpg"></div>
+                              <div data-type="after"><img src="images/a2.jpg"></div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row" style="margin-top: 50px;">
+                <div class="col-md-12">
                   <h1 class="display-4">Seperator Style</h1>
                   <p>With default settings.</p>
                   <code >
-                      $(".beforeafterdrag").cndkbeforeafter(<br>
-                        {<br>
-                            seperatorColor: "blue",<br>
-                            seperatorWidth: "15px",<br>
-                        }<br>
-                      );
+                    $(".beforeafterdrag").cndkbeforeafter( { seperatorWidth: "15px"} );
                   </code>
                   <div class="card" style="margin-top: 50px;">
                       <div class="beforeafterimageseperator">
@@ -151,12 +184,8 @@
                 <div class="col-md-12">
                   <h1 class="display-4">Hide Text</h1>
                   <p>With default settings.</p>
-                  <code >
-                      $(".beforeafterdrag").cndkbeforeafter(<br>
-                        {<br>
-                            showText: false<br>
-                        }<br>
-                      );
+                  <code>
+                      $(".beforeafterdrag").cndkbeforeafter( { showText: false } );
                   </code>
                   <div class="card" style="margin-top: 50px;">
                       <div class="beforeafterhidetext">
@@ -171,19 +200,38 @@
 
               <div class="row" style="margin-top: 50px;">
                 <div class="col-md-12">
+                  <h1 class="display-4">Animate Sliding</h1>
+                  <p>With default settings.</p>
+                  <code>
+                      $(".beforeafterdrag").cndkbeforeafter( { autoSliding: true } );
+                  </code>
+                  <div class="card" style="margin-top: 50px;">
+                      <div class="beforeafterautoslide">
+                          <div data-type="data-type-image">
+                              <div data-type="before"><img src="images/a1.jpg"></div>
+                              <div data-type="after"><img src="images/a2.jpg"></div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row" style="margin-top: 50px;">
+                <div class="col-md-12">
                   <h1 class="display-4">Attributes</h1>
                   <p>With default settings.</p>
                   <code >
-                    data-title="Old image"<br>
-                    data-title="This is new image"
+                    data-title="Green Screen"<br>
+                    data-title="At Movie"
                   </code>
                   <div class="card" style="margin-top: 50px;">
                       <div class="beforeafterdefault">
                           <div data-type="data-type-image">
-                              <div data-type="before" data-title="Old image"><img src="images/a1.jpg"></div>
-                              <div data-type="after" data-title="This is new image"><img src="images/a2.jpg"></div>
+                              <div data-type="before" data-title="Green Screen"><img src="images/b1.jpg"></div>
+                              <div data-type="after" data-title="At Movie"><img src="images/b2.jpg"></div>
                           </div>
                       </div>
+                      <small style="padding: 10px;">Screenshot from https://www.youtube.com/watch?v=1-Vstem0SMg</small>
                   </div>
                 </div>
               </div>
