@@ -185,7 +185,7 @@ $.fn.cndkbeforeafter = function(options) {
                     currentElement.find(".cndkbeforeafter-seperator, .cndkbeforeafter-item > div").removeClass("cndkbeforeafter-drag-transition");
                     currentElement.on("touchmove",function(e){
                         var parentOffset = currentElement.offset();
-                        var mouseX = parseInt((e.touches[0].pageX - parentOffset.left));
+                        var mouseX = parseInt((e.originalEvent.touches[0].pageX - parentOffset.left));
                         var mousePercent = (mouseX*100)/parseInt(root.width());
                         currentElement.find(".cndkbeforeafter-item-before-c").css("width",mousePercent+"%");
                         currentElement.find(".cndkbeforeafter-item-after-c").css("width",(100-mousePercent)+"%");
